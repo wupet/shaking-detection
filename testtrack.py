@@ -3,17 +3,18 @@ import cv2 as cv
 import argparse
 
 # parser = argparse.ArgumentParser(description='This sample demonstrates Lucas-Kanade Optical Flow calculation. \
-#                                               The example file can be downloaded from: \
-#                                               https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4')
+#                                                The example file can be downloaded from: \
+#                                                https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4')
 # parser.add_argument('video', type=str, help='./slow_traffix_small.mp4')
 # args = parser.parse_args()
 
+# cap = cv.VideoCapture(args.video)
 cap = cv.VideoCapture(0)
 
 # params for ShiTomasi corner detection
-feature_params = dict( maxCorners = 100,
+feature_params = dict( maxCorners = 10,
                        qualityLevel = 0.3,
-                       minDistance = 7,
+                       minDistance = 10,
                        blockSize = 7 )
 
 # Parameters for lucas kanade optical flow
@@ -42,7 +43,7 @@ while(1):
     if not ret:
         print('No frames grabbed!')
         break
-
+    frame = cv.flip(frame, 1)
     frame_gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
     # calculate optical flow
@@ -52,12 +53,12 @@ while(1):
     if p1 is not None:
         good_new = p1[st==1]
         good_old = p0[st==1]
-
     # draw the tracks
     for i, (new, old) in enumerate(zip(good_new, good_old)):
         a, b = new.ravel()
         c, d = old.ravel()
-        mask = cv.line(mask, (int(a), int(b)), (int(c), int(d)), color[i].tolist(), 2)
+        
+        # mask = cv.line(mask, (int(a), int(b)), (int(c), int(d)), color[i].tolist(), 2)
         frame = cv.circle(frame, (int(a), int(b)), 5, color[i].tolist(), -1)
     img = cv.add(frame, mask)
 
@@ -67,17 +68,18 @@ while(1):
         break
     elif k == ord('q'):
         break
-    elif k == ord('r'):
-        p0 = cv.goodFeaturesToTrack(old_gray, mask=None, **feature_params)
-        mask = np.zeros_like(frame)
 
     # Now update the previous frame and previous points
     old_gray = frame_gray.copy()
     p0 = good_new.reshape(-1, 1, 2)
     
+    if k == ord('r'):
+        p0 = cv.goodFeaturesToTrack(old_gray, mask=None, **feature_params)
+        # mask = np.zeros_like(frame)
+    
     # Re-detect if too few points are being tracked
     if len(p0) < 10:
         p0 = cv.goodFeaturesToTrack(old_gray, mask=None, **feature_params)
-        mask = np.zeros_like(frame)
+        # mask = np.zeros_like(frame)
 
 cv.destroyAllWindows()
