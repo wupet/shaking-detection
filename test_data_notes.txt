@@ -1,47 +1,50 @@
-notshaking1 has a bit of shaking near the end
-notshaking6 also has a bit of shaking in it though it is harder to see cause of the blur
-shaking13 may not work because it has a jank watermark and text
+=== shaking (19 videos, expected=SHAKE) ===
+  OK shaking1.mp4              detected=True   triggers= 415/1088  resets=0    time=5.15s
+  OK shaking2.mp4              detected=True   triggers= 457/626   resets=0    time=5.19s
+  OK shaking3.mp4              detected=True   triggers= 127/257   resets=1    time=4.83s
+  OK shaking4.mp4              detected=True   triggers= 284/527   resets=7    time=5.11s
+  OK shaking5.mp4              detected=True   triggers=  10/334   resets=0    time=11.20s
+  OK shaking6.mp4              detected=True   triggers=  18/300   resets=25   time=0.81s
+  OK shaking7.mp4              detected=True   triggers= 315/913   resets=0    time=3.74s
+  OK shaking8.mp4              detected=True   triggers=  89/293   resets=0    time=4.58s
+  OK shaking9.mp4              detected=True   triggers=  46/211   resets=0    time=2.64s
+  OK shaking10.mp4             detected=True   triggers=  22/59    resets=0    time=0.78s
+  OK shaking11.mp4             detected=True   triggers=  22/169   resets=0    time=2.31s
+  OK shaking12.mp4             detected=True   triggers=   7/250   resets=0    time=3.34s
+  OK shaking13.mp4             detected=True   triggers=  18/855   resets=0    time=22.23s
+  OK shaking14.mp4             detected=True   triggers=  29/164   resets=0    time=1.77s
+  OK shaking15.mp4             detected=True   triggers=   2/307   resets=0    time=2.51s
+  OK shaking16.mp4             detected=True   triggers=  54/122   resets=0    time=1.68s
+  OK shaking17.mp4             detected=True   triggers=   6/632   resets=0    time=5.70s
+  OK shaking18.mp4             detected=True   triggers=  95/298   resets=4    time=3.79s
+  OK shaking19.mp4             detected=True   triggers=  35/96    resets=0    time=1.17s
 
-=== shaking (13 videos, expected=SHAKE) ===
-  OK shaking1.mp4              detected=True   triggers= 450/1088  resets=0    time=4.65s
-  OK shaking2.mp4              detected=True   triggers= 461/626   resets=0    time=4.70s
-  OK shaking3.mp4              detected=True   triggers= 120/257   resets=1    time=5.93s
-  OK shaking4.mp4              detected=True   triggers= 248/527   resets=7    time=4.86s
-  OK shaking5.mp4              detected=True   triggers=   8/334   resets=0    time=12.00s
-  OK shaking6.mp4              detected=True   triggers=  30/300   resets=25   time=1.16s
-  OK shaking7.mp4              detected=True   triggers= 326/913   resets=0    time=4.44s
-  OK shaking8.mp4              detected=True   triggers=  76/293   resets=0    time=5.55s
-  OK shaking9.mp4              detected=True   triggers=  45/211   resets=0    time=2.91s
-  OK shaking10.mp4             detected=True   triggers=  24/59    resets=0    time=0.80s
-  OK shaking11.mp4             detected=True   triggers=  25/169   resets=0    time=2.43s
-  OK shaking12.mp4             detected=True   triggers=   7/250   resets=0    time=3.53s
-  OK shaking13.mp4             detected=True   triggers=   1/93    resets=3    time=0.39s
-
-=== notshaking (15 videos, expected=NO SHAKE) ===
-  XX notshaking1.mp4           detected=True   triggers=   7/632   resets=0    time=5.30s
-  OK notshaking2.mp4           detected=False  triggers=   0/1679  resets=0    time=14.93s
-  OK notshaking3.mp4           detected=False  triggers=   0/395   resets=1    time=3.32s
-  OK notshaking4.mp4           detected=False  triggers=   0/905   resets=1    time=7.94s
-  OK notshaking5.mp4           detected=False  triggers=   0/299   resets=0    time=5.84s
-  XX notshaking6.mp4           detected=True   triggers=  20/855   resets=0    time=23.82s
-  OK notshaking7.mp4           detected=False  triggers=   0/168   resets=2    time=0.61s
-  OK notshaking8.mp4           detected=False  triggers=   0/110   resets=1    time=0.48s
-  OK notshaking9.mp4           detected=False  triggers=   0/149   resets=2    time=0.67s
-  OK notshaking10.mp4          detected=False  triggers=   0/764   resets=28   time=11.06s
-  OK notshaking11.mp4          detected=False  triggers=   0/202   resets=0    time=0.85s
-  XX notshaking12.mp4          detected=True   triggers=  81/289   resets=0    time=1.66s
-  XX notshaking13.mp4          detected=True   triggers=   6/307   resets=0    time=1.52s
-  XX notshaking14.mp4          detected=True   triggers=  23/2309  resets=7    time=14.53s
-  OK notshaking15.mp4          detected=False  triggers=   0/366   resets=0    time=5.81s
+=== notshaking (18 videos, expected=NO SHAKE) ===
+  OK notshaking1.mp4           detected=False  triggers=   0/575   resets=0    time=6.16s
+  OK notshaking2.mp4           detected=False  triggers=   0/1679  resets=0    time=14.14s
+  OK notshaking3.mp4           detected=False  triggers=   0/395   resets=1    time=3.28s
+  OK notshaking4.mp4           detected=False  triggers=   0/905   resets=1    time=7.05s
+  OK notshaking5.mp4           detected=False  triggers=   0/299   resets=0    time=4.74s
+  OK notshaking6.mp4           detected=False  triggers=   0/291   resets=0    time=2.99s
+  OK notshaking7.mp4           detected=False  triggers=   0/168   resets=2    time=0.40s
+  OK notshaking8.mp4           detected=False  triggers=   0/110   resets=1    time=0.29s
+  OK notshaking9.mp4           detected=False  triggers=   0/149   resets=2    time=0.41s
+  OK notshaking10.mp4          detected=False  triggers=   0/764   resets=28   time=10.19s
+  OK notshaking11.mp4          detected=False  triggers=   0/202   resets=0    time=0.61s
+  OK notshaking12.mp4          detected=False  triggers=   0/329   resets=13   time=4.20s
+  OK notshaking13.mp4          detected=False  triggers=   0/252   resets=0    time=3.02s
+  OK notshaking14.mp4          detected=False  triggers=   0/366   resets=0    time=2.95s
+  OK notshaking15.mp4          detected=False  triggers=   0/619   resets=0    time=5.16s
+  OK notshaking16.mp4          detected=False  triggers=   0/778   resets=2    time=3.70s
+  OK notshaking17.mp4          detected=False  triggers=   0/629   resets=1    time=4.97s
+  OK notshaking18.mp4          detected=False  triggers=   0/656   resets=1    time=5.26s
 
 === Summary ===
-  True  Positives (shake correctly flagged):    13
+  True  Positives (shake correctly flagged):    19
   False Negatives (shake missed):                0
-  False Positives (not-shake wrongly flagged):   5
-  True  Negatives (not-shake correctly ignored): 10
-  Accuracy : 0.821
-  Precision: 0.722
+  False Positives (not-shake wrongly flagged):   0
+  True  Negatives (not-shake correctly ignored): 18
+  Accuracy : 1.000
+  Precision: 1.000
   Recall   : 1.000
-  F1       : 0.839
-
-  we are gonna check sensitivity2, check grid colr&row btoh then try a bit of tuning, then move onto lightweight ai
+  F1       : 1.000

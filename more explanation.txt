@@ -1,0 +1,21 @@
+lucas kanade tracking makes 3 assumptions
+    1. a thing doesnt change that much in between frames as its moving
+    2. a thing doesn't move to far in between frames
+    3. pixels generally move together
+
+We basically take a window of pixels, and ask, what translation would cause it to match the most 
+with neighboring pixels in the next frame. However, to do so, we assume that all the pixels in 
+the window have the same movement. Thus, we will have an overdetermined system where we can
+use least squares to find the best mapping. 
+
+Although we want to assume that things dont move to fast, it is not always the case. Thus, what we 
+do is we reduce the resolution by a bunch. Then, a 50 pixel movement becomes 5. Then once we get a 
+idea of the mapping, we can slightly increase the resolution and try again but this time with the
+hint we got from running on a lower resolution. In this way, we can build our way up from a low to 
+a high resolution with greater accuracy.
+
+cv.calcOpticalFlowPyrLK() returns an array of the translated points it predicted for a set of 
+points given two frames, an array of whether or not a point was found, and tracking error per point
+
+np.linalg.norm() by default uses the frobenius norm to calculate the general magnitude of a matrix.
+here, we use it to quantify the general magnitude of change when going forwards and backwards once

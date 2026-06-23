@@ -46,52 +46,20 @@ def grid_goodFeaturesToTrack(gray, cols=12, rows=9, pts_per_cell=1, **st_params)
     return np.concatenate(all_pts, axis=0).astype(np.float32)
 
 
-def shift_data(new_gray, good_new):
-    """ Promote the current frame's state to become the "previous" state for the next iteration.
+def get_next_frame(cap, target_w, target_h):
+    """ Returns the next frame in both color and grayscale resized to the target dimensions.
 
-    In an optical-flow loop the freshly processed grayscale frame and the
-    points that survived tracking need to be rolled forward so that, on the
-    next iteration, they play the role of "old". This helper makes a copy of
-    the current grayscale image (so subsequent in-place operations do not
-    corrupt history) and reshapes the surviving points back into the
-    (N, 1, 2) layout that `cv.calcOpticalFlowPyrLK` expects as input.
-    """
-    
-    old_gray = new_gray.copy()
-    p0 = good_new.reshape(-1, 1, 2)
-    return old_gray, p0
-
-
-def get_proc_next_frame(cap):
-    """ Read the next frame from a video capture and return both color and grayscale versions.
-
-    The function calls `cap.read()` on the supplied `cv.VideoCapture` object.
-    If the capture has ended or fails, `(None, None)` is returned so the
-    caller can break out of its loop cleanly. Otherwise the BGR frame is
-    converted to a single-channel grayscale image (suitable for feature
-    detection and Lucas-Kanade tracking) and both versions are returned.
-    """
-    
-    ret, new_frame = cap.read()
-    if not ret:
-        return None, None
-    return new_frame, cv.cvtColor(new_frame, cv.COLOR_BGR2GRAY)
-
-
-def get_scaled_frame(cap, target_w, target_h):
-    """ Read the next frame and resize both its color and grayscale versions to a target resolution.
-
-    This is a thin wrapper around `get_proc_next_frame`: it first pulls the
-    next BGR frame and its grayscale counterpart from the capture, and if
-    the stream is exhausted it propagates `(None, None)`. Both images are
+    First, the next frame is read and a grayscale couterpart is generated.
+    If the stream is exhausted it propagates `(None, None)`. Both images are
     then resampled with `cv.resize` to the requested `target_w` x `target_h`
     dimensions so downstream processing operates on a known, fixed-size
-    canvas regardless of the source resolution.
+    canvas regardless of the source resolution. 
+    (mainly done for the sake of consistency and speed)
     """
-    
-    frame, gray = get_proc_next_frame(cap)
-    if frame is None:
+    ret, frame = cap.read()
+    if not ret:
         return None, None
+    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     scaled_frame = cv.resize(frame, (target_w, target_h))
     scaled_gray = cv.resize(gray, (target_w, target_h))
     return scaled_frame, scaled_gray
@@ -99,7 +67,7 @@ def get_scaled_frame(cap, target_w, target_h):
 
 def track_with_fb_validation(prev_gray, curr_gray, prev_pts, lk_params,
                              fb_error_threshold=1.0):
-    """ Track points between two frames with forward-backward Lucas-Kanade consistency checking.
+    """ Returns successfully tracked previous points, their new positions, and whether the initial points were tracked
 
     The function performs three steps. First, a forward pyramidal LK pass
     estimates where each point in `prev_pts` lands in `curr_gray`. Second,

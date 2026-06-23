@@ -24,8 +24,7 @@ import numpy as np
 import cv2 as cv
 from collections import deque
 
-from functions import (grid_goodFeaturesToTrack, shift_data,
-                       get_proc_next_frame, track_with_fb_validation)
+from functions import (grid_goodFeaturesToTrack, track_with_fb_validation, get_next_frame)
 
 # ---------------- Detector tuning (mirror iteration3.py) ----------------
 sensitivity         = 0.15
@@ -52,13 +51,6 @@ lk_params = dict(winSize=(21, 21), maxLevel=3,
                            10, 0.03))
 
 
-def scaled_frame(cap, tw, th):
-    frame, gray = get_proc_next_frame(cap)
-    if frame is None:
-        return None, None
-    return cv.resize(frame, (tw, th)), cv.resize(gray, (tw, th))
-
-
 def run_detector_on_video(path, verbose=False):
     """
     Returns dict with:
@@ -81,7 +73,7 @@ def run_detector_on_video(path, verbose=False):
     else:
         tw, th = ow, oh
 
-    old_frame, old_gray = scaled_frame(cap, tw, th)
+    old_frame, old_gray = get_next_frame(cap, tw, th)
     if old_gray is None:
         cap.release()
         return None
@@ -101,7 +93,7 @@ def run_detector_on_video(path, verbose=False):
     resets         = 0
     t0 = time.time()
 
-    new_frame, new_gray = scaled_frame(cap, tw, th)
+    new_frame, new_gray = get_next_frame(cap, tw, th)
     while new_frame is not None:
         total_frames += 1
 
@@ -168,7 +160,8 @@ def run_detector_on_video(path, verbose=False):
             if shake:
                 trigger_frames += 1
 
-            old_gray, p0     = shift_data(new_gray, good_new)
+            old_gray         = new_gray 
+            p0               = good_new
             old_vec          = new_vec
             old_accel        = new_accel
             old_global_accel = global_a
@@ -189,7 +182,7 @@ def run_detector_on_video(path, verbose=False):
             warmup = 3
             resets += 1
 
-        new_frame, new_gray = scaled_frame(cap, tw, th)
+        new_frame, new_gray = get_next_frame(cap, tw, th)
 
     cap.release()
     elapsed = time.time() - t0
