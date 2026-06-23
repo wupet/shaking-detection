@@ -1,0 +1,84 @@
+Found 28 videos.
+Params: {'sensitivity': 0.18, 'qopts': 0.01, 'sensitivity2': 0.92, 'spread': 5, 'minpts': 25, 'fb_error_threshold': 0.5, 'shake_frame_ratio': 0.01, 'frame_skip': 1, 'grid_cols': 8, 'grid_rows': 6, 'pts_per_cell': 1}
+
+  [OK  ] shaking1.mp4              truth=shake pred=shake ratio=35.29% (1088f, 4.1s)
+  [OK  ] shaking10.mp4             truth=shake pred=shake ratio=37.29% (59f, 0.5s)
+  [OK  ] shaking11.mp4             truth=shake pred=shake ratio=13.02% (169f, 2.1s)
+  [OK  ] shaking12.mp4             truth=shake pred=shake ratio=2.00% (250f, 3.6s)
+  [MISS] shaking13.mp4             truth=shake pred=still ratio=0.00% (81f, 0.3s)
+  [OK  ] shaking2.mp4              truth=shake pred=shake ratio=54.88% (625f, 4.4s)
+  [OK  ] shaking3.mp4              truth=shake pred=shake ratio=29.80% (245f, 4.4s)
+  [OK  ] shaking4.mp4              truth=shake pred=shake ratio=50.67% (519f, 3.6s)
+  [OK  ] shaking5.mp4              truth=shake pred=shake ratio=1.80% (334f, 9.8s)
+  [OK  ] shaking6.mp4              truth=shake pred=shake ratio=3.49% (258f, 0.8s)
+  [OK  ] shaking7.mp4              truth=shake pred=shake ratio=14.95% (910f, 3.5s)
+  [OK  ] shaking8.mp4              truth=shake pred=shake ratio=11.95% (293f, 4.8s)
+  [OK  ] shaking9.mp4              truth=shake pred=shake ratio=16.59% (211f, 2.5s)
+
+  [OK  ] notshaking1.mp4           truth=still pred=still ratio=0.16% (631f, 4.1s)
+  [OK  ] notshaking10.mp4          truth=still pred=still ratio=0.00% (717f, 9.3s)
+  [OK  ] notshaking11.mp4          truth=still pred=still ratio=0.00% (198f, 0.6s)
+  [MISS] notshaking12.mp4          truth=still pred=shake ratio=23.18% (289f, 1.6s)
+  [OK  ] notshaking13.mp4          truth=still pred=still ratio=0.00% (307f, 1.6s)
+  [OK  ] notshaking14.mp4          truth=still pred=still ratio=0.09% (2293f, 11.3s)
+  [OK  ] notshaking15.mp4          truth=still pred=still ratio=0.00% (366f, 2.8s)
+  [OK  ] notshaking2.mp4           truth=still pred=still ratio=0.06% (1677f, 15.4s)
+  [OK  ] notshaking3.mp4           truth=still pred=still ratio=0.00% (392f, 3.6s)
+  [OK  ] notshaking4.mp4           truth=still pred=still ratio=0.00% (899f, 7.3s)
+  [OK  ] notshaking5.mp4           truth=still pred=still ratio=0.00% (299f, 5.5s)
+  [OK  ] notshaking6.mp4           truth=still pred=still ratio=0.94% (850f, 27.2s)
+  [OK  ] notshaking7.mp4           truth=still pred=still ratio=0.00% (160f, 0.4s)
+  [OK  ] notshaking8.mp4           truth=still pred=still ratio=0.00% (106f, 0.3s)
+  [OK  ] notshaking9.mp4           truth=still pred=still ratio=0.00% (140f, 0.4s)
+
+--- Results ---
+Accuracy: 92.86%  (26/28)
+Shaking  caught: 12/13   (FN=1)
+Still    passed: 14/15   (FP=1)
+
+Misclassified:
+  shaking\shaking13.mp4
+  notshaking\notshaking12.mp4
+
+
+Found 28 videos.
+Params: {'sensitivity': 0.18, 'qopts': 0.01, 'sensitivity2': 0.92, 'spread': 5, 'minpts': 37, 'fb_error_threshold': 0.5, 'shake_frame_ratio': 0.01, 'frame_skip': 1, 'grid_cols': 12, 'grid_rows': 9, 'pts_per_cell': 1}
+
+  [OK  ] shaking1.mp4              truth=shake pred=shake ratio=35.29% (1088f, 5.7s)
+  [OK  ] shaking10.mp4             truth=shake pred=shake ratio=35.59% (59f, 1.0s)
+  [OK  ] shaking11.mp4             truth=shake pred=shake ratio=9.47% (169f, 2.4s)
+  [MISS] shaking12.mp4             truth=shake pred=still ratio=0.40% (250f, 3.7s)
+  [OK  ] shaking13.mp4             truth=shake pred=shake ratio=1.14% (88f, 0.4s)
+  [OK  ] shaking2.mp4              truth=shake pred=shake ratio=53.35% (626f, 5.2s)
+  [OK  ] shaking3.mp4              truth=shake pred=shake ratio=34.51% (255f, 4.9s)
+  [OK  ] shaking4.mp4              truth=shake pred=shake ratio=50.86% (521f, 4.0s)
+  [OK  ] shaking5.mp4              truth=shake pred=shake ratio=1.80% (334f, 11.7s)
+  [OK  ] shaking6.mp4              truth=shake pred=shake ratio=4.49% (267f, 0.9s)
+  [OK  ] shaking7.mp4              truth=shake pred=shake ratio=10.86% (912f, 4.0s)
+  [OK  ] shaking8.mp4              truth=shake pred=shake ratio=8.19% (293f, 5.1s)
+  [OK  ] shaking9.mp4              truth=shake pred=shake ratio=8.06% (211f, 2.7s)
+
+  [OK  ] notshaking1.mp4           truth=still pred=still ratio=0.16% (632f, 4.9s)
+  [OK  ] notshaking10.mp4          truth=still pred=still ratio=0.00% (733f, 11.0s)
+  [OK  ] notshaking11.mp4          truth=still pred=still ratio=0.00% (201f, 0.7s)
+  [MISS] notshaking12.mp4          truth=still pred=shake ratio=23.18% (289f, 1.5s)
+  [OK  ] notshaking13.mp4          truth=still pred=still ratio=0.00% (307f, 1.3s)
+  [OK  ] notshaking14.mp4          truth=still pred=still ratio=0.13% (2299f, 11.2s)
+  [OK  ] notshaking15.mp4          truth=still pred=still ratio=0.00% (366f, 3.1s)
+  [OK  ] notshaking2.mp4           truth=still pred=still ratio=0.06% (1678f, 14.0s)
+  [OK  ] notshaking3.mp4           truth=still pred=still ratio=0.00% (394f, 3.1s)
+  [OK  ] notshaking4.mp4           truth=still pred=still ratio=0.00% (903f, 7.1s)
+  [OK  ] notshaking5.mp4           truth=still pred=still ratio=0.67% (299f, 5.8s)
+  [OK  ] notshaking6.mp4           truth=still pred=still ratio=0.35% (855f, 24.9s)
+  [OK  ] notshaking7.mp4           truth=still pred=still ratio=0.00% (165f, 0.4s)
+  [OK  ] notshaking8.mp4           truth=still pred=still ratio=0.00% (108f, 0.3s)
+  [OK  ] notshaking9.mp4           truth=still pred=still ratio=0.00% (145f, 0.4s)
+
+--- Results ---
+Accuracy: 92.86%  (26/28)
+Shaking  caught: 12/13   (FN=1)
+Still    passed: 14/15   (FP=1)
+
+Misclassified:
+  shaking\shaking12.mp4
+  notshaking\notshaking12.mp4
