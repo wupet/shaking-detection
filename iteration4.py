@@ -45,9 +45,9 @@ def main():
 
     load_dotenv()
 
-    cap = cv.VideoCapture(0)
+    # cap = cv.VideoCapture(0)
     # cap = cv.VideoCapture("shaking\\shaking16.mp4")
-    # cap = cv.VideoCapture(os.getenv("rtsp_url"))
+    cap = cv.VideoCapture(os.getenv("rtsp_url"))
 
     # calculates new dimensions and scales display to such
     orig_width = int(cap.get(cv.CAP_PROP_FRAME_WIDTH))

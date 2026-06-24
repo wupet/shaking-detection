@@ -49,7 +49,7 @@ def grid_goodFeaturesToTrack(gray, cols=12, rows=9, pts_per_cell=1, **st_params)
 def get_next_frame(cap, target_w, target_h):
     """ Returns the next frame in both color and grayscale resized to the target dimensions.
 
-    First, the next frame is read and a grayscale couterpart is generated.
+    First, the next frame is read and a grayscale counterpart is generated.
     If the stream is exhausted it propagates `(None, None)`. Both images are
     then resampled with `cv.resize` to the requested `target_w` x `target_h`
     dimensions so downstream processing operates on a known, fixed-size
