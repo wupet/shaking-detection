@@ -6,7 +6,7 @@
 from dotenv import load_dotenv
 import numpy as np
 import cv2 as cv
-from irrelevant_tests.testrtsp import *
+from previous_iterations.irrelevant_tests.testrtsp import *
 import os
 
 from functions import *

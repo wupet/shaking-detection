@@ -3,7 +3,7 @@
 # consider checking all points for similar vector movement insteead of vector movement in general
 import numpy as np
 import cv2 as cv
-from irrelevant_tests.testrtsp import *
+from previous_iterations.irrelevant_tests.testrtsp import *
 from functions import *
 
 # define stuff like where input is from and parameters for lk and st

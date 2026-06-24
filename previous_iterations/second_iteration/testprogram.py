@@ -1,6 +1,6 @@
 import os
 import cv2
-from second_iteration.functions2 import CameraShakeDetector
+from previous_iterations.second_iteration.functions2 import CameraShakeDetector
 
 def evaluate_video(video_path, detector_params):
     """

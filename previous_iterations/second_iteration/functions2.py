@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from second_iteration.functions2 import *
+from previous_iterations.second_iteration.functions2 import *
 from collections import deque
 from scipy.signal import butter, filtfilt
 

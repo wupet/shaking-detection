@@ -2,7 +2,7 @@ import os
 import cv2
 import itertools
 import numpy as np
-from second_iteration.functions2 import CameraShakeDetector
+from previous_iterations.second_iteration.functions2 import CameraShakeDetector
 
 # Exact Folder and Prefix Mapping
 CATEGORIES = {

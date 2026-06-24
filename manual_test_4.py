@@ -73,7 +73,7 @@ def run_detector_on_video(path, verbose=False):
     else:
         tw, th = ow, oh
 
-    old_frame, old_gray = get_next_frame(cap, tw, th)
+    _, old_gray = get_next_frame(cap, tw, th)
     if old_gray is None:
         cap.release()
         return None
