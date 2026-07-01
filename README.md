@@ -2,6 +2,9 @@
 This python script is used to detect shaking in a video
 
 # ---------------- Usage ----------------
+### Demo
+To run the demo, go to lines 48-50 of iteration4.py and comment out all but the type of demo you would like to conduct (local camera stream, video, rtsp stream). Then run the iteration4.py file without any other arguments.
+
 ### Running The Program
 To run the program, you can run either iteration4.py or manual_test_4.py as any python script.
 
@@ -139,3 +142,6 @@ Do note that if you adjust certain variables to the extremes, you will get a lar
 
 ### Minimum Video Length
 Theoretically, the shortest video in which you could detect shaking is 4 + osc_flips_required frames. This is because to calculate jerk in the first place, you need 4 different positional data points. This is because jerk is the third-order derivative of position with respect to time. Thus, we would need at least a third order polynomial describing position with respect to time to be able to give a non-zero answer when approximating the jerk. However, we need 4 points to define a third order polynomial, hence the first 4 frames. Afterwards, we need at least osc_flips_required additional frames to add that many extra global jerk values to the jerk history to demonstrate that many flips in direction. However, in practice it would be a good bit longer than that.
+
+### Weird Framerate Implications
+The program does not account for frame rates. Thus, a higher fps video will seem "slower" than a lower fps video. Thus, you may need to retune the variables for different fps videos. Additionally at lower fps, (particularly 5ps and lower) there will be a lot of mislabeling due to shaking disappearing when you remove specific frames, and smooth movement looking shaky. 
